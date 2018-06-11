@@ -1,6 +1,7 @@
 package br.com.fittank.fittank.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -25,10 +26,6 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 		
-	@ElementCollection
-	@CollectionTable(name  = "objetivo", joinColumns = @JoinColumn(name = "id_cliente"))
-	@Column
-	private List<String> objetivos;
 
 	@Column
 	private Float peso;
@@ -47,6 +44,24 @@ public class Cliente implements Serializable {
 	@JoinColumn(name = "fk_plano_treino", nullable = false)
 	private PlanoTreino planoTreino;
 		
+	@ElementCollection
+	@CollectionTable(name  = "objetivo", joinColumns = @JoinColumn(name = "id_cliente"))
+	@Column
+	private List<String> objetivos = new ArrayList<>();
+
+	public Cliente() {
+		
+	}
+	
+	public Cliente(Long id, Float peso, Float altura, Float massaMagra, Usuario usuario, PlanoTreino planoTreino) {
+		this.id = id;
+		this.peso = peso;
+		this.altura = altura;
+		this.massaMagra = massaMagra;
+		this.usuario = usuario;
+		this.planoTreino = planoTreino;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -102,5 +117,35 @@ public class Cliente implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", peso=" + peso + ", altura=" + altura + ", massaMagra=" + massaMagra
+				+ ", usuario=" + usuario + ", planoTreino=" + planoTreino + ", objetivos=" + objetivos + "]";
+	}
 }

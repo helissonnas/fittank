@@ -1,6 +1,7 @@
 package br.com.fittank.fittank.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -36,7 +37,18 @@ public class PlanoTreino implements Serializable {
 	@JoinTable(name="plano_exercicio", joinColumns=
 	      {@JoinColumn(name="plano_id")}, inverseJoinColumns=
       {@JoinColumn(name="exercicio_id")})
-	private List<Exercicio> exercicio;
+	private List<Exercicio> exercicio = new ArrayList<>();
+
+	public PlanoTreino() {
+		
+	}
+	
+	public PlanoTreino(Long id, Cliente cliente, Personal personal) {
+		super();
+		this.id = id;
+		this.cliente = cliente;
+		this.personal = personal;
+	}
 
 	public Long getId() {
 		return id;
@@ -69,6 +81,36 @@ public class PlanoTreino implements Serializable {
 	public void setExercicio(List<Exercicio> exercicio) {
 		this.exercicio = exercicio;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PlanoTreino other = (PlanoTreino) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "PlanoTreino [id=" + id + ", cliente=" + cliente + ", personal=" + personal + ", exercicio=" + exercicio
+				+ "]";
+	}
 			
 }

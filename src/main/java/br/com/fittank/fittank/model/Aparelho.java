@@ -35,6 +35,18 @@ public class Aparelho implements Serializable {
 	@JoinColumn(name = "fk_academia")
 	private Academia academia;
 
+	public Aparelho() {
+
+	}
+	
+	public Aparelho(Long id, Integer numeroSerie, String modelo, boolean ocupado, Academia academia) {
+		this.id = id;
+		this.numeroSerie = numeroSerie;
+		this.modelo = modelo;
+		this.ocupado = ocupado;
+		this.academia = academia;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -74,5 +86,35 @@ public class Aparelho implements Serializable {
 	public void setAcademia(Academia academia) {
 		this.academia = academia;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aparelho other = (Aparelho) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Aparelho [id=" + id + ", numeroSerie=" + numeroSerie + ", modelo=" + modelo + ", ocupado=" + ocupado
+				+ ", academia=" + academia + "]";
+	}	
 }
