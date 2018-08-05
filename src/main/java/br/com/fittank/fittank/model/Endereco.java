@@ -24,17 +24,21 @@ public class Endereco implements Serializable {
 	
 	@Column(nullable = false)
 	private String cidade;
+	
+	@Column(nullable = true)
+	private String complemento;
 
 	public Endereco() {
 		
 	}
 	
-	public Endereco(String numero, String rua, String bairro, String cidade) {
+	public Endereco(String numero, String rua, String bairro, String cidade, String complemento) {
 		super();
 		this.numero = numero;
 		this.rua = rua;
 		this.bairro = bairro;
 		this.cidade = cidade;
+		this.complemento = complemento;
 	}
 
 	public String getNumero() {
@@ -69,12 +73,21 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 	}
 
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
+		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
 		result = prime * result + ((rua == null) ? 0 : rua.hashCode());
 		return result;
@@ -99,6 +112,11 @@ public class Endereco implements Serializable {
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
+		if (complemento == null) {
+			if (other.complemento != null)
+				return false;
+		} else if (!complemento.equals(other.complemento))
+			return false;
 		if (numero == null) {
 			if (other.numero != null)
 				return false;
@@ -114,8 +132,7 @@ public class Endereco implements Serializable {
 
 	@Override
 	public String toString() {
-		return rua + ", N " + numero + ", " + bairro + ", " + cidade;
-	}
-
-	
+		return "Endereco [numero=" + numero + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade
+				+ ", complemento=" + complemento + "]";
+	}	
 }
