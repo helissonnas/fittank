@@ -24,7 +24,7 @@ public class Academia implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 
 	@Column
 	private String nome;
@@ -45,18 +45,18 @@ public class Academia implements Serializable {
 	
 	}
 	
-	public Academia(Long id, String nome, Endereco endereco) {
+	public Academia(Integer id, String nome, Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

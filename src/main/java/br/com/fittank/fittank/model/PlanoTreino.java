@@ -24,7 +24,7 @@ public class PlanoTreino implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	
 	@OneToOne(mappedBy = "planoTreino")
 	private Cliente cliente;
@@ -43,18 +43,18 @@ public class PlanoTreino implements Serializable {
 		
 	}
 	
-	public PlanoTreino(Long id, Cliente cliente, Personal personal) {
+	public PlanoTreino(Integer id, Cliente cliente, Personal personal) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
 		this.personal = personal;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -23,7 +23,7 @@ public class Personal implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	
 	@OneToOne
 	@JoinColumn(name = "fk_usuario", nullable = false)
@@ -37,17 +37,17 @@ public class Personal implements Serializable {
 		
 	}
 	
-	public Personal(Long id, Usuario usuario) {
+	public Personal(Integer id, Usuario usuario) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

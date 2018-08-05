@@ -24,7 +24,7 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 		
 
 	@Column
@@ -53,7 +53,7 @@ public class Cliente implements Serializable {
 		
 	}
 	
-	public Cliente(Long id, Float peso, Float altura, Float massaMagra, Usuario usuario, PlanoTreino planoTreino) {
+	public Cliente(Integer id, Float peso, Float altura, Float massaMagra, Usuario usuario, PlanoTreino planoTreino) {
 		this.id = id;
 		this.peso = peso;
 		this.altura = altura;
@@ -110,11 +110,11 @@ public class Cliente implements Serializable {
 		this.massaMagra = massaMagra;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

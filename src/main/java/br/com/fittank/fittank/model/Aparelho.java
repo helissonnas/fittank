@@ -20,7 +20,7 @@ public class Aparelho implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	
 	@Column
 	private Integer numeroSerie;
@@ -39,7 +39,7 @@ public class Aparelho implements Serializable {
 
 	}
 	
-	public Aparelho(Long id, Integer numeroSerie, String modelo, boolean ocupado, Academia academia) {
+	public Aparelho(Integer id, Integer numeroSerie, String modelo, boolean ocupado, Academia academia) {
 		this.id = id;
 		this.numeroSerie = numeroSerie;
 		this.modelo = modelo;
@@ -47,11 +47,11 @@ public class Aparelho implements Serializable {
 		this.academia = academia;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
