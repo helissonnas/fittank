@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Academia implements Serializable {
 
@@ -35,6 +37,7 @@ public class Academia implements Serializable {
 	@OneToMany(mappedBy = "academia", targetEntity = Usuario.class, 
 			fetch = FetchType.LAZY, 
 			cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Usuario> usuarios = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "academia", targetEntity = Aparelho.class, 

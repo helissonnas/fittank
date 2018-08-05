@@ -28,7 +28,7 @@ public interface RouterController<T> {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public default T post(@Valid @RequestBody T obj) {
+	public default Object post(@Valid @RequestBody T obj) {
 		return getService().save(obj);
 	}
 		
