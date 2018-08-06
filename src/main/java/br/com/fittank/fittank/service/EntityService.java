@@ -3,8 +3,10 @@ package br.com.fittank.fittank.service;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import br.com.fittank.fittank.model.Academia;
+import br.com.fittank.fittank.model.Usuario;
 import br.com.fittank.fittank.service.exception.ObjectNotFoundException;
 
 public interface EntityService<T> {
@@ -36,4 +38,5 @@ public interface EntityService<T> {
 	default public List<T> findAll() {
 		return this.getRepository().findAll();
 	}
+
 }

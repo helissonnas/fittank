@@ -33,7 +33,7 @@ public interface RouterController<T> {
 	}
 		
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public default void deletaAcademia(@PathVariable T obj) {
+	public default void delete(@PathVariable T obj) {
 		getService().delete(obj);
 	}
 }
