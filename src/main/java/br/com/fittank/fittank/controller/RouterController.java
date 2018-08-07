@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +33,8 @@ public interface RouterController<T> {
 		return getService().save(obj);
 	}
 		
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public default void delete(@PathVariable T obj) {
+	@RequestMapping(method=RequestMethod.DELETE)
+	public default void delete(@Valid @RequestBody T obj) {
 		getService().delete(obj);
 	}
 }

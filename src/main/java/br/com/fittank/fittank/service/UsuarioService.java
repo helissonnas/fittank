@@ -24,5 +24,9 @@ public class UsuarioService implements EntityService<Usuario> {
 
 	public List<Usuario> findGerentes() {		
 		return this.usuarioRepository.findByPerfis(Perfil.GERENTE.ordinal());
-	}	
+	}
+	
+	public Usuario findByEmail(String email) {
+		return this.usuarioRepository.findByEmail(email);
+	}
 }
