@@ -1,6 +1,7 @@
 package br.com.fittank.fittank.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +27,8 @@ public class AcademiaController implements RouterController<Academia> {
 		return this.academiaServ;
 	}
 	
-	@RequestMapping(value="/email/{email}", method=RequestMethod.GET)
+	@RequestMapping(value="/email/{email:.+}", method=RequestMethod.GET)
 	public Academia getByEmail(@PathVariable String email) {
-		System.out.println(email);
 		Usuario user = this.userService.findByEmail(email);
 		return user.getAcademia();
 	}
